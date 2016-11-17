@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 16-nov-2016 18:31:22 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entities.Player" table="player" catalog="fpf" optimistic-lock="version">
+        <id name="idPlayer" type="java.lang.Integer">
+            <column name="idPlayer" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="team" class="Entities.Team" fetch="select">
+            <column name="idTeam" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true" />
+        </property>
+        <property name="weight" type="big_decimal">
+            <column name="weight" precision="18" not-null="true" />
+        </property>
+        <property name="height" type="big_decimal">
+            <column name="height" precision="18" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
