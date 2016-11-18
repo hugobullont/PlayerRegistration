@@ -31,6 +31,9 @@
                 <li  class="uk-active"><a href="list.jsp">Players List</a></li>
             </ul>
         </nav>
+        <div class="uk-alert uk-alert-danger" data-uk-alert>
+            <p>The Player Was Deleted!!!</p>
+        </div>
         <table class="uk-table uk-table-striped">
             <caption>&nbsp;Peruvian Players List</caption>
             <thead>

@@ -76,7 +76,7 @@ public class DeletePlayer extends HttpServlet {
             throws ServletException, IOException {
         String strID = request.getParameter("txtID");
         IPlayerRepository playerRepo = new PlayerRepository();
-        RequestDispatcher rdConfirm = request.getRequestDispatcher("list.jsp");
+        RequestDispatcher rdConfirm = request.getRequestDispatcher("listDeleted.jsp");
         playerRepo.DeletePlayer(Integer.valueOf(strID));
         rdConfirm.forward(request, response);
         

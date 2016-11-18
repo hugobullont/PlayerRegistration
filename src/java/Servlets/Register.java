@@ -85,7 +85,7 @@ public class Register extends HttpServlet {
         IPlayerRepository repo = new PlayerRepository();
         Player newPlayer = new Player();
         Team team = new Team();
-        RequestDispatcher rdConfirm = request.getRequestDispatcher("list.jsp");
+        RequestDispatcher rdConfirm = request.getRequestDispatcher("listRegister.jsp");
         
         team.setIdTeam(Integer.valueOf(strIdTeam));
         
