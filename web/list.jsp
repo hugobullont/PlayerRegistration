@@ -4,6 +4,10 @@
     Author     : Hugo
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="Entities.Player"%>
+<%@page import="DataAccess.PlayerRepository.PlayerRepository"%>
+<%@page import="DataAccess.PlayerRepository.IPlayerRepository"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +18,9 @@
         <script src="js/jquery.js"></script>
         <script src="js/uikit.min.js"></script>
     </head>
+    <% IPlayerRepository playerRepo = new PlayerRepository();
+        List<Player> playersList = playerRepo.GetAllPlayers();
+    %>
     <body>
         </br>
         <h1 class="uk-text-center">Peruvian Players DataBase</h1>
@@ -24,5 +31,36 @@
                 <li  class="uk-active"><a href="list.jsp">Players List</a></li>
             </ul>
         </nav>
+        
+        <table class="uk-table uk-table-striped">
+            <caption>&nbsp;Peruvian Players List</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Weight</th>
+                    <th>Height</th>
+                    <th>Team</th>
+                    <th>City</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(Player player:playersList){%>
+                <form action="DeletePlayer" method="POST">
+                    <input type="hidden" value="<%= player.getIdPlayer()%>" name="txtID" id="txtID" 
+                    <tr>
+                        <td><%= player.getIdPlayer()%></td>
+                        <td><%= player.getName()%></td>
+                        <td><%= player.getWeight()%></td>
+                        <td><%= player.getHeight()%></td>
+                        <td><%= player.getTeam().getName()%></td>
+                        <td><%= player.getTeam().getCity()%></td>
+                        <td><button class="uk-button" type="submit">Delete</button></td>
+                    </tr>
+                </form>
+                <%}%>
+            </tbody>
+        </table>
     </body>
 </html>

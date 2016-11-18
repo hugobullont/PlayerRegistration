@@ -5,14 +5,8 @@
  */
 package Servlets;
 
-import DataAccess.PlayerRepository.IPlayerRepository;
-import DataAccess.PlayerRepository.PlayerRepository;
-import Entities.Player;
-import Entities.Team;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usuario
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "DeletePlayer", urlPatterns = {"/DeletePlayer"})
+public class DeletePlayer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +37,10 @@ public class Register extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Register</title>");            
+            out.println("<title>Servlet DeletePlayer</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Register at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DeletePlayer at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -78,24 +72,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String strName = request.getParameter("txtName");
-        String strWeight = request.getParameter("txtWeight");
-        String strHeight = request.getParameter("txtHeight");
-        String strIdTeam = request.getParameter("slTeam");
-        IPlayerRepository repo = new PlayerRepository();
-        Player newPlayer = new Player();
-        Team team = new Team();
-        RequestDispatcher rdConfirm = request.getRequestDispatcher("list.jsp");
-        
-        team.setIdTeam(Integer.valueOf(strIdTeam));
-        
-        newPlayer.setName(strName);
-        newPlayer.setHeight(BigDecimal.valueOf(Double.valueOf(strHeight)));
-        newPlayer.setWeight(BigDecimal.valueOf(Double.valueOf(strWeight)));
-        newPlayer.setTeam(team);
-        
-        repo.AddPlayer(newPlayer);
-        rdConfirm.forward(request, response);
+        String strID = request.getParameter("txtID");
         
     }
 
