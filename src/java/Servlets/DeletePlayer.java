@@ -5,8 +5,10 @@
  */
 package Servlets;
 
+import DataAccess.PlayerRepository.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,6 +75,10 @@ public class DeletePlayer extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String strID = request.getParameter("txtID");
+        IPlayerRepository playerRepo = new PlayerRepository();
+        RequestDispatcher rdConfirm = request.getRequestDispatcher("list.jsp");
+        playerRepo.DeletePlayer(Integer.valueOf(strID));
+        rdConfirm.forward(request, response);
         
     }
 
