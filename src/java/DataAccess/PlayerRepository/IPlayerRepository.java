@@ -6,6 +6,7 @@
 package DataAccess.PlayerRepository;
 
 import Entities.Player;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,6 @@ import Entities.Player;
 public interface IPlayerRepository {
     public void AddPlayer(Player objPlayer);
     public void DeletePlayer(int idPlayer);
-    public void UpdatePlayer (int idPlayer);
+    public void UpdatePlayer (Player objPlayer);
+    public List<Player> GetAllPlayers();
 }
